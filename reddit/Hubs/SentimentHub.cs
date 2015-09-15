@@ -10,7 +10,15 @@ namespace reddit.Hubs
     {
         public void UpdateSentiment(RedditSentiment sentiment)
         {
-            Clients.All.updateSentiments(sentiment);
+            var value = new Sentiment()
+            {
+                Body = sentiment.Body,
+                Url = sentiment.Url,
+                Value = Convert.ToDecimal(sentiment.Value)
+            };
+
+
+            Clients.All.updateSentiments(value);
         }
     }
 
@@ -18,6 +26,13 @@ namespace reddit.Hubs
     {
         public string Value { get; set; }
         public string Title { get; set; }
+        public string Url { get; set; }
+        public string Body { get; set; }
+    }
+
+    public class Sentiment
+    {
+        public decimal Value { get; set; }
         public string Url { get; set; }
         public string Body { get; set; }
     }

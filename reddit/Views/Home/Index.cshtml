@@ -1,17 +1,21 @@
-﻿
-    <a class="block" title="well hello there" href="http://jamessturtevant.com"></a>
-<a class="block blue" title="well hello there" href="http://jamessturtevant.com"></a>
-<a class="block green" title="well hello there" href="http://jamessturtevant.com"></a>
-<a class="block" title="well hello there" href="http://jamessturtevant.com"></a>
-<a class="block blue" title="well hello there" href="http://jamessturtevant.com"></a>
-<a class="block green" title="well hello there" href="http://jamessturtevant.com"></a>
-
-
-
-
-<div class="jumbotron">
+﻿<div>
     Reddit Feels...
+</div>  
+
+<div id="feelings">
+    <a class="block" title="well hello there" href="http://jamessturtevant.com"></a>
+    <a class="block blue" title="well hello there" href="http://jamessturtevant.com"></a>
+    <a class="block green" title="well hello there" href="http://jamessturtevant.com"></a>
+    <a class="block" title="well hello there" href="http://jamessturtevant.com"></a>
+    <a class="block blue" title="well hello there" href="http://jamessturtevant.com"></a>
+    <a class="block green" title="well hello there" href="http://jamessturtevant.com"></a>
 </div>
+ 
+
+
+
+
+
 
 
 @section scripts
@@ -23,18 +27,20 @@
     <script>
         $(function () {
             var chat = $.connection.sentimentHub;
+            $.connection.hub.start()
+
             // Create a function that the hub can call to broadcast messages.
-            chat.client.broadcastMessage = function (data) {
+            chat.client.updateSentiments = function (data) {
 
 
-                var sentiment = '<a class="block" title="' + data.title + '" href="' + data.Url + '"></a>'
+                var sentiment = '<a class="block" title="' + data.Body + '" href="' + data.Url + '"></a>'
                 // Html encode display name and message. 
                 var encodedName = $(sentiment);
 
                 //switch(data.Value)  
 
 
-                $('body').append(encodedName);
+                $('#feelings').append(encodedName);
             };
         });
 
