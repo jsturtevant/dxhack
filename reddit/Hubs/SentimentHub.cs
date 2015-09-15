@@ -8,9 +8,17 @@ namespace reddit.Hubs
 {
     public class SentimentHub : Hub
     {
-        public void Results(List<string> values)
+        public void UpdateSentiment(RedditSentiment sentiment)
         {
-
+            Clients.All.updateSentiments(sentiment);
         }
+    }
+
+    public class RedditSentiment
+    {
+        public string Value { get; set; }
+        public string Title { get; set; }
+        public string Url { get; set; }
+        public string Body { get; set; }
     }
 }
