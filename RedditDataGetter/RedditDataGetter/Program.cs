@@ -23,7 +23,7 @@ namespace RedditDataGetter
 
     class Program
     {
-        private static string HUB_URL = "http://localhost:54294/";
+        private static string HUB_URL = "http://redditanalysis.azurewebsites.net/";
         private static string HUBPROXY_URL = "SentimentHub";
         private string HUB_METHOD = "UpdateSentiment";
         
@@ -33,9 +33,7 @@ namespace RedditDataGetter
         void Start()
         {
             _conn.Start().Wait();
-            // Start Signalr Connection
-            //_conn.Start();
-
+        
             // Setup reddit connection
             var reddit = new Reddit();
             var user = reddit.LogIn("dxhack", "P@ssw0rd");
@@ -71,7 +69,7 @@ namespace RedditDataGetter
                 Body = c.Body
             };
 
-            callSentimentSite(JsonConvert.SerializeObject(rs));
+            callSentimentSite(rs);
 
             if (c.Comments.Count > 0)
                 c.Comments.ToList().ForEach(a =>
@@ -128,7 +126,7 @@ namespace RedditDataGetter
             }
         }
 
-        void callSentimentSite(string data)
+        void callSentimentSite(RedditSentiment data)
         {
             connProxy.Invoke(HUB_METHOD, data);
         }
