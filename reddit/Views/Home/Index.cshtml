@@ -37,10 +37,41 @@
                 // Html encode display name and message. 
                 var encodedName = $(sentiment);
 
-                //switch(data.Value)  
+                switch (true) {
+                    case (data.Value <= .1):
+                        encodedName.addClass("negativeOne");
+                        break;
+                    case (data.Value <= .2 && data.Value > .1):
+                        encodedName.addClass("negativeTwo");
+                        break;
+                    case (data.Value <= .3 && data.Value > .2):
+                        encodedName.addClass("negativeThree");
+                        break;
+                    case (data.Value <= .4 && data.Value > .3):
+                        encodedName.addClass("neutralFour");
+                        break;
+                    case (data.Value <= .5 && data.Value > .4):
+                        encodedName.addClass("neutralFive");
+                        break;
+                    case (data.Value <= .6 && data.Value > .5):
+                        encodedName.addClass("neutralSix");
+                        break;
+                    case (data.Value <= .7 && data.Value > .6):
+                        encodedName.addClass("positiveSeven");
+                        break;
+                    case (data.Value <= .8 && data.Value > .7):
+                        encodedName.addClass("positiveEight");
+                        break;
+                    case (data.Value <= .0 && data.Value > .8):
+                        encodedName.addClass("positiveNine");
+                        break;
+                    case (data.Value <= 1.0 && data.Value > .9):
+                        encodedName.addClass("positiveTen");
+                        break;
+                }
 
 
-                $('#feelings').append(encodedName);
+                $('#feelings').prepend(encodedName);
             };
         });
 

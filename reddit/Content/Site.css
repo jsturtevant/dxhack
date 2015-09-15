@@ -33,3 +33,44 @@ textarea {
 .block.green{
     background-color:green;
 }
+
+
+.block.negativeOne {
+    background-color:#006600;
+}
+ 
+.block.negativeTwo {
+    background-color:#009900;
+}
+ 
+.block.negativeThree {
+    background-color:#00CC00;
+}
+ 
+.block.neutralFour {
+    background-color:#00FF00;
+}
+ 
+.block.neutralFive {
+    background-color:#99FF00;
+}
+ 
+.block.neutralSix {
+    background-color:#99cc00;
+}
+ 
+.block.positiveSeven {
+    background-color:#999900;
+}
+ 
+.block.positiveEight {
+    background-color:#996600;
+}
+ 
+.block.positiveNine {
+    background-color:#993300;
+}
+ 
+.block.positiveTen {
+    background-color:#990000;
+}
