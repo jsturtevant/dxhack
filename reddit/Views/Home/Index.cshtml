@@ -27,12 +27,14 @@
             chat.client.broadcastMessage = function (data) {
 
 
+                var sentiment = '<a class="block" title="' + data.title + '" href="' + data.Url + '"></a>'
                 // Html encode display name and message. 
-                var encodedName = $('<div />').text(name).html();
-                var encodedMsg = $('<div />').text(message).html();
-                // Add the message to the page. 
-                $('#discussion').append('<li><strong>' + encodedName
-                    + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+                var encodedName = $(sentiment);
+
+                //switch(data.Value)  
+
+
+                $('body').append(encodedName);
             };
         });
 
